@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "AE-MoSE: an AutoEncoder Mixture of Spatial Experts for Geodemographic Classification"
+authors:
+  - family-names: "De Sabbata"
+    given-names: "Stef"
+    orcid: https://orcid.org/0000-0002-2750-7579
+  - family-names: "Liu"
+    given-names: "Pengyuan"
+    orcid: https://orcid.org/0000-0002-5443-5910
+  - family-names: "Goodwin"
+    given-names: "Owen"
+    orcid: https://orcid.org/0000-0002-2592-1338
+  - family-names: "Singleton"
+    given-names: "Alex"
+    orcid: https://orcid.org/0000-0002-2338-2334
+preferred-citation:
+  type: conference-paper
+  title: "AE-MoSE: an AutoEncoder Mixture of Spatial Experts for Geodemographic Classification"
+  authors:
+    - family-names: "De Sabbata"
+      given-names: "Stef"
+    - family-names: "Liu"
+      given-names: "Pengyuan"
+    - family-names: "Goodwin"
+      given-names: "Owen"
+    - family-names: "Singleton"
+      given-names: "Alex"
+  collection-title: "Proceedings of the 1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)"
+  conference:
+    name: "1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)"
+    city: "Ghent"
+    country: "BE"
+  month: 5
+  year: 2026
+  publisher:
+    name: "Zenodo"
+  doi: "10.5281/zenodo.20303749"
+  url: "https://doi.org/10.5281/zenodo.20303749"

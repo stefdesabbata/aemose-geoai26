@@ -1,0 +1,219 @@
+Input dataset:
+ data/pyg/ukc2021-proc20251009001rs__pygdata.pth
+
+Config:
+
+random_seed = 72770
+max_epochs = 1500
+min_epochs = 600
+earlystop_delta = 0.0
+earlystop_patience = 10
+
+
+Loader type: <class 'torch_geometric.loader.neighbor_loader.NeighborLoader'>
+
+
+
+
+AEMoE architecture:
+AutoencoderMoSE(
+  (encoder): MLP(
+    (mlp): Sequential(
+      (0): Linear(in_features=171, out_features=192, bias=False)
+      (1): BatchNorm1d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.01)
+      (3): Linear(in_features=192, out_features=128, bias=False)
+      (4): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): LeakyReLU(negative_slope=0.01)
+      (6): Linear(in_features=128, out_features=96, bias=False)
+      (7): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (8): LeakyReLU(negative_slope=0.01)
+      (9): Linear(in_features=96, out_features=64, bias=True)
+    )
+  )
+  (gating_network): SpatialGatingNetwork(
+    (gconvs): Sequential(
+      (0): SAGEConv(171, 128, aggr=MeanAggregation())
+      (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.01)
+    )
+    (group_mlp): MLP(
+      (mlp): Sequential(
+        (0): Linear(in_features=128, out_features=64, bias=False)
+        (1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.01)
+        (3): Linear(in_features=64, out_features=32, bias=False)
+        (4): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.01)
+        (6): Linear(in_features=32, out_features=7, bias=True)
+      )
+    )
+    (gr_exp_mlp): ModuleList(
+      (0-6): 7 x MLP(
+        (mlp): Sequential(
+          (0): Linear(in_features=64, out_features=32, bias=False)
+          (1): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): LeakyReLU(negative_slope=0.01)
+          (3): Linear(in_features=32, out_features=16, bias=False)
+          (4): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (5): LeakyReLU(negative_slope=0.01)
+          (6): Linear(in_features=16, out_features=3, bias=True)
+        )
+      )
+    )
+  )
+  (moe_decoder): MoEDecoder(
+    (experts): ModuleList(
+      (0-20): 21 x MLP(
+        (mlp): Sequential(
+          (0): Linear(in_features=64, out_features=96, bias=False)
+          (1): BatchNorm1d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (2): LeakyReLU(negative_slope=0.01)
+          (3): Linear(in_features=96, out_features=128, bias=False)
+          (4): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (5): LeakyReLU(negative_slope=0.01)
+          (6): Linear(in_features=128, out_features=192, bias=False)
+          (7): BatchNorm1d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (8): LeakyReLU(negative_slope=0.01)
+          (9): Linear(in_features=192, out_features=171, bias=True)
+        )
+      )
+    )
+  )
+)
+
+AutoencoderMoE hyperparameters:
+	input_dim = 171
+	encoder_dims = [192, 128, 96, 64]
+	gating_dims = [[64, 32], [32, 16]]
+	gating_tau_ann_start_val = 5.0
+	gating_tau_ann_end_val = 1.0
+	gating_tau_ann_start_at = 11220
+	gating_tau_ann_len_at = 112200
+	gating_hard_group = True
+	gating_hard_group_start_at = 187000
+	gating_hard_expert = False
+	gating_hard_expert_start_at = 56100
+	expert_dims = None
+	num_experts = [7, 3]
+	enc_neg_slope = 0.01
+	enc_batchnorm = True
+	enc_layernorm = False
+	enc_dropout = 0.0
+	enc_init = orthogonal
+	enc_final_bias = True
+	enc_final_act = False
+	enc_learning_rate = 0.001
+	gtn_neg_slope = 0.01
+	gtn_batchnorm = True
+	gtn_layernorm = False
+	gtn_dropout = 0.0
+	gtn_init = normal_small
+	gtn_final_bias = True
+	gtn_final_act = False
+	gtn_learning_rate = 0.001
+	dec_neg_slope = 0.01
+	dec_batchnorm = True
+	dec_layernorm = False
+	dec_dropout = 0.0
+	dec_init = orthogonal
+	dec_final_bias = True
+	dec_final_act = False
+	dec_learning_rate = 0.001
+	gconv_type = SAGE
+	gconv_dims = [128]
+	gat_heads = None
+	gat_concat = None
+	gat_residual = None
+	cv2_loss_coef_grp = 0.05
+	cv2_loss_coef_exp = 0.1
+	cv2_loss_tol_grp = 0.1
+	cv2_loss_tol_exp = 0.1
+	spec_loss_coef_grp = 0.005
+	spec_loss_coef_exp = 0.005
+	weight_decay = 0.001
+	monitor_es = val_loss
+	monitor_lr = val_loss
+	scheduler_patience = 30
+	scheduler_factor = 0.5
+	scheduler_start_at_epoch = 530
+	batch_size = 512
+	model_name = ukc2021-proc20251009001rs__aemose-4-4_e7x3_s192-128-96-64_sage128_g0-64-32-g1-32-16_b512_20260517124211
+
+Encoder hyperparameters:
+	training = True
+	size_sequence = [171, 192, 128, 96, 64]
+	num_of_layers = 4
+	use_neg_slope = 0.01
+	use_batchnorm = True
+	use_layernorm = False
+	use_dropout = 0.0
+	use_init = orthogonal
+	use_final_bias = True
+	use_final_act = False
+
+MoE Decoder hyperparameters:
+	training = True
+	expert_dims = [64, 96, 128, 192]
+	embedding_dim = 64
+	output_dim = 192
+	eps = 1e-09
+	Single expert (decoder) hyperparameters:
+		training = True
+		size_sequence = [64, 96, 128, 192, 171]
+		num_of_layers = 4
+		use_neg_slope = 0.01
+		use_batchnorm = True
+		use_layernorm = False
+		use_dropout = 0.0
+		use_init = orthogonal
+		use_final_bias = True
+		use_final_act = False
+
+GatingNetwork MLP hyperparameters:
+	training = True
+	gating_groups = [64, 32]
+	gating_pergrp = [32, 16]
+	num_exp_groups = 7
+	num_exp_pergrp = 3
+	gat_heads = None
+	gat_concat = None
+	gat_residual = None
+	gconv_type = SAGE
+	gconv_dims = [171, 128]
+	gconv_out_dim = 128
+	gconv_use_bias = False
+	Post-GNN MLP:
+		training = True
+		size_sequence = [128, 64, 32, 7]
+		num_of_layers = 3
+		use_neg_slope = 0.01
+		use_batchnorm = True
+		use_layernorm = False
+		use_dropout = 0.0
+		use_init = normal_small
+		use_final_bias = True
+		use_final_act = False
+
+Total number of parameters: 1764083
+Trainable parameters: 1764083
+Non-trainable parameters: 0
+
+
+Total epochs trained: 1500
+Best model (early stopping) epoch: 1381
+Best model (early stopping) step: 516868
+
+
+Metrics at best early stopping epoch:
+	train_loss = 0.006413272116333246
+	train_recon_loss = 0.006283303257077932
+	train_spec_loss_grp = 0.0
+	train_spec_loss_exp = 0.0009908518986776471
+	train_dead_experts = 0.002677558222785592
+	val_loss = 0.007193090859800577
+	val_recon_loss = 0.007036071270704269
+	val_spec_loss_grp = 0.0
+	val_spec_loss_exp = 0.0009672256419435143
+	val_dead_experts = 0.0
+

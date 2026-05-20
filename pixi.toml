@@ -1,0 +1,43 @@
+# pixi run python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+
+[workspace]
+name = "aemoe4geodemo-dev"
+version = "0.1.0"
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["linux-64"]
+
+[system-requirements]
+cuda = "12.9"
+
+[dependencies]
+python       = "3.12.*"
+setuptools   = "<81"
+city2graph   = ">=0.3.1"
+matplotlib   = ">=3.9"
+numpy        = ">=1.26"
+pandas       = ">=3.0"
+geopandas    = ">=1.0"
+pysal        = ">=26.1"
+scipy        = ">=1.13"
+scikit-learn = ">=1.4"
+folium       = ">=0.16"
+h3-py        = ">=4.0"
+tensorboard  = ">=2.20"
+rich         = "*"
+ipykernel    = ">=6"
+
+[pypi-dependencies]
+lightning       = ">=2.4"
+plotly          = ">=5.0"
+torch           = { version = "~=2.8.0", index = "https://download.pytorch.org/whl/cu129" }
+torchvision     = { version = ">=0.20.1", index = "https://download.pytorch.org/whl/cu129" }
+torch_geometric = "~=2.7.0"
+# PyG accelerator wheels pinned by direct URL (avoids find-links interfering
+# with PyPI resolution of other packages in pixi 0.67.x). Update these URLs
+# whenever torch / CUDA / Python versions change. Wheel index:
+# https://data.pyg.org/whl/torch-2.8.0+cu129.html
+pyg_lib       = { url = "https://data.pyg.org/whl/torch-2.8.0%2Bcu129/pyg_lib-0.6.0%2Bpt28cu129-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl" }
+torch_scatter = { url = "https://data.pyg.org/whl/torch-2.8.0%2Bcu129/torch_scatter-2.1.2%2Bpt28cu129-cp312-cp312-linux_x86_64.whl" }
+torch_sparse  = { url = "https://data.pyg.org/whl/torch-2.8.0%2Bcu129/torch_sparse-0.6.18%2Bpt28cu129-cp312-cp312-linux_x86_64.whl" }
+
+[tasks]
