@@ -3,7 +3,21 @@
 This repository includes the code that support the findings reported in the extended abstract *"AE-MoSE: an AutoEncoder Mixture of Spatial Experts for Geodemographic Classification"* (De Sabbata et al., 2026) presented at the [1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)](https://geoaiconference.org/), Ghent, Belgium on 3-6 June 2026.
 
 ```{bibtex}
-todo
+@inproceedings{de_sabbata_2026_20303749,
+  author       = {De Sabbata, Stef and
+                  Liu, Pengyuan and
+                  Goodwin, Owen and
+                  Singleton, Alex},
+  title        = {AE-MoSE: an AutoEncoder Mixture of Spatial Experts
+                  for Geodemographic Classification},
+  booktitle    = {Proceedings of the 1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)},
+  address      = {Ghent, Belgium},
+  month        = may,
+  year         = 2026,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20303749},
+  url          = {https://doi.org/10.5281/zenodo.20303749},
+}
 ```
 
 ## Abstract
@@ -30,8 +44,24 @@ This repository is *not* currently configured for full end-to-end reproducibilit
 
 ## How to cite
 
+Please cite our conference paper.
+
 ```{bibtex}
-todo
+@inproceedings{de_sabbata_2026_20303749,
+  author       = {De Sabbata, Stef and
+                  Liu, Pengyuan and
+                  Goodwin, Owen and
+                  Singleton, Alex},
+  title        = {AE-MoSE: an AutoEncoder Mixture of Spatial Experts
+                  for Geodemographic Classification},
+  booktitle    = {Proceedings of the 1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026)},
+  address      = {Ghent, Belgium},
+  month        = may,
+  year         = 2026,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20303749},
+  url          = {https://doi.org/10.5281/zenodo.20303749},
+}
 ```
 
 ## Acknowledgments
